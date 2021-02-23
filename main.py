@@ -2,6 +2,8 @@ import os
 import datetime
 import requests
 import urllib.request as req
+from tqdm import tqdm
+
 import settings
 from secrets import API_KEY
 
@@ -72,7 +74,7 @@ with open(f'downloads/{current_date}/urls.txt', 'w') as f:
     for url in photo_urls:
         f.write("%s\n" % url)
 
-for url in photo_urls:
+for url in tqdm(photo_urls):
     name = url.split('.com/')[1].split('/')[1].split('.')[0]
     req.urlretrieve(url, f'downloads/{current_date}/{name}.jpg')
 
