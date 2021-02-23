@@ -1,4 +1,5 @@
 import os
+import datetime
 import requests
 from secrets import API_KEY
 
@@ -57,3 +58,10 @@ if downloads_dir_exists:
     pass
 else:
     os.mkdir('downloads')
+
+current_date = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+os.mkdir(f'downloads/{current_date}')
+
+with open(f'downloads/{current_date}/{current_date}.txt', 'w') as f:
+    for url in photo_urls:
+        f.write("%s\n" % url)
