@@ -1,3 +1,4 @@
+import os
 import requests
 from secrets import API_KEY
 
@@ -41,13 +42,18 @@ def get_photo_urls(photo_ids):
 
 group_url = 'https://www.flickr.com/groups/velvia50/pool/'
 
-print('STEP 1/4: Finding group\n-')
+print('STEP 1/4: Finding group\n---')
 group_id = get_group_id(group_url)
 
-print('STEP 2/4: Getting photo IDs\n-')
+print('STEP 2/4: Getting photo IDs\n---')
 photo_ids = get_photo_ids(group_id)
 
-print('STEP 3/4: Converting IDs to URLs\n-')
+print('STEP 3/4: Converting IDs to URLs\n---')
 photo_urls = get_photo_urls(photo_ids)
 
-print('STEP 4/4: Downloading photos\n-')
+print('STEP 4/4: Downloading photos\n---')
+downloads_dir_exists = os.path.isdir('downloads')
+if downloads_dir_exists:
+    pass
+else:
+    os.mkdir('downloads')
