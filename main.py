@@ -2,6 +2,7 @@ import os
 import datetime
 import requests
 import urllib.request as req
+import settings
 from secrets import API_KEY
 
 def get_group_id(group_url):
@@ -41,6 +42,7 @@ def get_photo_urls(photo_ids):
         photo_urls.append(r['sizes']['size'][0]['source'])
     
     return photo_urls
+    
 
 group_url = 'https://www.flickr.com/groups/velvia50/pool/'
 
