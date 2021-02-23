@@ -27,8 +27,16 @@ def get_photo_ids(group_id):
 
     return pic_ids
 
+def get_photo_urls(photo_ids):
+    # https://www.flickr.com/services/api/flickr.photos.getSizes.htm
+
+    for photo_id in photo_ids:
+        url = f'https://www.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key={API_KEY}&photo_id={photo_id}&format=json&nojsoncallback=1'
+
+        r = requests.get(url).json()
+        print(r)
+
 group_url = 'https://www.flickr.com/groups/velvia50/pool/'
 group_id = get_group_id(group_url)
-
 photo_ids = get_photo_ids(group_id)
-print(photo_ids)
+photo_urls = get_photo_urls(photo_ids)
