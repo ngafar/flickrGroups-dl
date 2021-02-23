@@ -1,6 +1,7 @@
 import os
 import datetime
 import requests
+import urllib.request as req
 from secrets import API_KEY
 
 def get_group_id(group_url):
@@ -62,6 +63,10 @@ else:
 current_date = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 os.mkdir(f'downloads/{current_date}')
 
-with open(f'downloads/{current_date}/{current_date}.txt', 'w') as f:
+with open(f'downloads/{current_date}/urls.txt', 'w') as f:
     for url in photo_urls:
         f.write("%s\n" % url)
+
+for url in photo_urls:
+    name = url.split('.com/')[1].split('/')[1].split('.')[0]
+    req.urlretrieve(url, f'downloads/{current_date}/{name}.jpg')
