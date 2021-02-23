@@ -18,7 +18,7 @@ def get_group_id(group_url):
 def get_photo_ids(group_id):
     # https://www.flickr.com/services/api/flickr.photos.search.html
 
-    url = f'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key={API_KEY}&group_id={group_id}&format=json&nojsoncallback=1&page=1&per_page=50'
+    url = f'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key={API_KEY}&group_id={group_id}&format=json&nojsoncallback=1&page=1&per_page=10'
 
     r = requests.get(url).json()
 
@@ -42,9 +42,12 @@ def get_photo_urls(photo_ids):
         photo_urls.append(r['sizes']['size'][0]['source'])
     
     return photo_urls
-    
 
-group_url = 'https://www.flickr.com/groups/velvia50/pool/'
+
+#group_url = 'https://www.flickr.com/groups/velvia50/pool/'
+print('Welcome to flickGroup-dl')
+print('Enter a flickr group URL:')
+group_url = input('>')
 
 print('🌘 STEP 1/4: Finding group\n---')
 group_id = get_group_id(group_url)
@@ -62,7 +65,7 @@ if downloads_dir_exists:
 else:
     os.mkdir('downloads')
 
-current_date = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+current_date = datetime.datetime.now().strftime('%Y-%m-%d_%H%M%S')
 os.mkdir(f'downloads/{current_date}')
 
 with open(f'downloads/{current_date}/urls.txt', 'w') as f:
