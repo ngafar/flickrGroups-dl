@@ -37,7 +37,7 @@ def get_photo_urls(photo_ids):
     # https://www.flickr.com/services/api/flickr.photos.getSizes.htm
     
     photo_urls = []
-    for photo_id in photo_ids:
+    for photo_id in tqdm(photo_ids):
         url = f'https://www.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key={API_KEY}&photo_id={photo_id}&format=json&nojsoncallback=1'
 
         r = requests.get(url).json()
@@ -61,19 +61,23 @@ print('🌖 STEP 3/4: Converting IDs to URLs\n---')
 photo_urls = get_photo_urls(photo_ids)
 
 print('🌕 STEP 4/4: Downloading photos\n---')
+# see if "downloads" folder exists 
 downloads_dir_exists = os.path.isdir('downloads')
 if downloads_dir_exists:
     pass
 else:
     os.mkdir('downloads')
 
+# create a folder using datetime
 current_date = datetime.datetime.now().strftime('%Y-%m-%d_%H%M%S')
 os.mkdir(f'downloads/{current_date}')
 
+# write urls to txt file
 with open(f'downloads/{current_date}/urls.txt', 'w') as f:
     for url in photo_urls:
         f.write("%s\n" % url)
 
+# download jpgs from url
 for url in tqdm(photo_urls):
     name = url.split('.com/')[1].split('/')[1].split('.')[0]
     req.urlretrieve(url, f'downloads/{current_date}/{name}.jpg')
