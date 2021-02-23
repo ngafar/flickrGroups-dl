@@ -40,9 +40,14 @@ def get_photo_urls(photo_ids):
     return photo_urls
 
 group_url = 'https://www.flickr.com/groups/velvia50/pool/'
+
+print('STEP 1/4: Finding group\n-')
 group_id = get_group_id(group_url)
-print(group_id)
+
+print('STEP 2/4: Getting photo IDs\n-')
 photo_ids = get_photo_ids(group_id)
-print(photo_ids)
+
+print('STEP 3/4: Converting IDs to URLs\n-')
 photo_urls = get_photo_urls(photo_ids)
-print(photo_urls)
+
+print('STEP 4/4: Downloading photos\n-')
