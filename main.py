@@ -17,7 +17,7 @@ def get_group_id(group_url):
 def get_photo_ids(group_id):
     # https://www.flickr.com/services/api/flickr.photos.search.html
 
-    url = f'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key={API_KEY}&group_id={group_id}&format=json&nojsoncallback=1&page=1&per_page=10'
+    url = f'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key={API_KEY}&group_id={group_id}&format=json&nojsoncallback=1&page=1&per_page=50'
 
     r = requests.get(url).json()
 
@@ -44,16 +44,16 @@ def get_photo_urls(photo_ids):
 
 group_url = 'https://www.flickr.com/groups/velvia50/pool/'
 
-print('STEP 1/4: Finding group\n---')
+print('🌘 STEP 1/4: Finding group\n---')
 group_id = get_group_id(group_url)
 
-print('STEP 2/4: Getting photo IDs\n---')
+print('🌗 STEP 2/4: Getting photo IDs\n---')
 photo_ids = get_photo_ids(group_id)
 
-print('STEP 3/4: Converting IDs to URLs\n---')
+print('🌖 STEP 3/4: Converting IDs to URLs\n---')
 photo_urls = get_photo_urls(photo_ids)
 
-print('STEP 4/4: Downloading photos\n---')
+print('🌕 STEP 4/4: Downloading photos\n---')
 downloads_dir_exists = os.path.isdir('downloads')
 if downloads_dir_exists:
     pass
@@ -70,3 +70,5 @@ with open(f'downloads/{current_date}/urls.txt', 'w') as f:
 for url in photo_urls:
     name = url.split('.com/')[1].split('/')[1].split('.')[0]
     req.urlretrieve(url, f'downloads/{current_date}/{name}.jpg')
+
+print('✅ Done')
