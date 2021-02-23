@@ -14,29 +14,35 @@ def get_group_id(group_url):
 def get_photo_ids(group_id):
     # https://www.flickr.com/services/api/flickr.photos.search.html
 
-    url = f'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key={API_KEY}&group_id={group_id}&format=json&nojsoncallback=1&page=1&per_page=500'
+    url = f'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key={API_KEY}&group_id={group_id}&format=json&nojsoncallback=1&page=1&per_page=10'
 
     r = requests.get(url).json()
 
     # Flickr paginates the resuts. Default is 100 results per page, max is 500.
     total_pages = r['photos']['pages']
 
-    pic_ids = []
-    for pic in r['photos']['photo']:
-        pic_ids.append(pic['id'])
+    photo_ids = []
+    for photo in r['photos']['photo']:
+        photo_ids.append(photo['id'])
 
-    return pic_ids
+    return photo_ids
 
 def get_photo_urls(photo_ids):
     # https://www.flickr.com/services/api/flickr.photos.getSizes.htm
-
+    
+    photo_urls = []
     for photo_id in photo_ids:
         url = f'https://www.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key={API_KEY}&photo_id={photo_id}&format=json&nojsoncallback=1'
 
         r = requests.get(url).json()
-        print(r)
+        photo_urls.append(r['sizes']['size'][0]['source'])
+    
+    return photo_urls
 
 group_url = 'https://www.flickr.com/groups/velvia50/pool/'
 group_id = get_group_id(group_url)
+print(group_id)
 photo_ids = get_photo_ids(group_id)
+print(photo_ids)
 photo_urls = get_photo_urls(photo_ids)
+print(photo_urls)
