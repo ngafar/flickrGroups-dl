@@ -17,19 +17,33 @@ def get_group_id(group_url):
 
     return group_id
 
-def get_photo_ids(group_id):
+def get_photo_ids(group_id, n=0, page=1, photo_ids=[]):
     # https://www.flickr.com/services/api/flickr.photos.search.html
 
-    url = f'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key={API_KEY}&group_id={group_id}&format=json&nojsoncallback=1&page=1&per_page=10'
+    # determine the number of imgs to display per page
+    # max is 500, then the api paginates
+    if settings.NUMBER_OF_IMGS < 500:
+        per_page = settings.NUMBER_OF_IMGS
+    else:
+        per_page = 500
 
+    url = f'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key={API_KEY}&group_id={group_id}&format=json&nojsoncallback=1&page=1&per_page={per_page}&page={page}'
+   
     r = requests.get(url).json()
 
-    # Flickr paginates the resuts. Default is 100 results per page, max is 500.
+    for photo in r['photos']['photo']:
+        if n < settings.NUMBER_OF_IMGS:
+            photo_ids.append(photo['id'])
+            n += 1
+
     total_pages = r['photos']['pages']
 
-    photo_ids = []
-    for photo in r['photos']['photo']:
-        photo_ids.append(photo['id'])
+    if (n < settings.NUMBER_OF_IMGS) and (page < total_pages):
+        # if we've gotten all the imgs on a page, 
+        # and we still need more imgs to hit the quota,
+        # go to next page (assuming there is one) 
+        page += 1
+        get_photo_ids(group_id, n, page, photo_ids)
 
     return photo_ids
 
