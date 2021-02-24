@@ -8,7 +8,7 @@ These groups make it easy for users to create their own datasets easily.
 
 ## Installation 
 
-Simply clone this repository as you would normally do:
+Ensure you have Python 3.6+ installed, then simply clone this repository as you would normally do:
 
 ```
 git clone https://github.com/ngafar/flickrGroups-dl.git
@@ -28,10 +28,17 @@ Then to run the program:
 python main.py
 ```
 
-** HOLD UP! ** Before you can use the program you have to add your API key. Keep reading to see how.
+**HOLD UP!** Before you can use the program you have to add your API key. Keep reading to see how.
 
 ## Setup
 
 You'll need an API key from Flickr. [Get one here](https://www.flickr.com/services/), it's free.
 
-Once you have an API key, paste it into `secrets-sample.py`.
+Once you have an API key, paste it into `secrets-sample.py`, and rename it to `secrets.py`.
+
+## Settings
+
+In `settings.py` you'll find some paramaters that can be adjusted.
+
+* `NUMBER_OF_IMGS`: The number of images you want to download
+* `SIZE`: Currently set to 0, have to do more research on this
