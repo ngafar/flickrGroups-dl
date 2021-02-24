@@ -43,4 +43,4 @@ Once you have an API key, paste it into `secrets-sample.py`, and rename it to `s
 In `settings.py` you'll find some parameters that can be adjusted.
 
 * `NUMBER_OF_IMGS`: The number of images you want to download
-* `SIZE`: Currently set to 0, have to do more research on this
+* `SIZE`: **0** for small square (default), **1** for large square, **-1** for original

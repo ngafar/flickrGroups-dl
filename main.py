@@ -55,7 +55,7 @@ def get_photo_urls(photo_ids):
         url = f'https://www.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key={API_KEY}&photo_id={photo_id}&format=json&nojsoncallback=1'
 
         r = requests.get(url).json()
-        photo_urls.append(r['sizes']['size'][0]['source'])
+        photo_urls.append(r['sizes']['size'][settings.SIZE]['source'])
     
     return photo_urls
 
