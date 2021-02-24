@@ -1,4 +1,4 @@
-# flickrGroups-dl
+# 🌉 flickrGroups-dl
 
 ![screenshot](screenshots/demo.png)
 
@@ -30,7 +30,7 @@ Then to run the program:
 python main.py
 ```
 
-**HOLD UP!** Before you can use the program you have to add your API key. Keep reading to see how.
+🛑 Before you can use the program you have to add your API key. Keep reading to see how.
 
 ## Setup
 
