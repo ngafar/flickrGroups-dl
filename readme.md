@@ -1,6 +1,6 @@
 # flickrGroups-dl
 
-<img src="screenshots/Screen Shot 2021-02-23 at 8.04.52 PM.png" alt="screenshot" />
+![screenshot](screentshots/Screen Shot 2021-02-23 at 8.04.52 PM.png)
 
 While the name Flickr may encourage feelings of nastolgia, the site is still alive. This project is a command line tool that helps users bulk download images from Flickr groups.
 
