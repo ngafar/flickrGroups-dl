@@ -62,8 +62,7 @@ def get_photo_urls(photo_ids):
 
 #group_url = 'https://www.flickr.com/groups/velvia50/pool/'
 print('Welcome to flickGroups-dl')
-print('Enter a flickr group URL:')
-group_url = input('')
+group_url = input('Enter a Flickr group URL: ')
 
 print('\n🌘 STEP 1/4: Finding group')
 group_id = get_group_id(group_url)
