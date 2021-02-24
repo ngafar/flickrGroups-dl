@@ -63,18 +63,18 @@ def get_photo_urls(photo_ids):
 #group_url = 'https://www.flickr.com/groups/velvia50/pool/'
 print('Welcome to flickGroup-dl')
 print('Enter a flickr group URL:')
-group_url = input('>')
+group_url = input('')
 
-print('🌘 STEP 1/4: Finding group\n---')
+print('\n🌘 STEP 1/4: Finding group')
 group_id = get_group_id(group_url)
 
-print('🌗 STEP 2/4: Getting photo IDs\n---')
+print('\n🌗 STEP 2/4: Getting photo IDs')
 photo_ids = get_photo_ids(group_id)
 
-print('🌖 STEP 3/4: Converting IDs to URLs\n---')
+print('\n🌖 STEP 3/4: Converting IDs to URLs\n')
 photo_urls = get_photo_urls(photo_ids)
 
-print('🌕 STEP 4/4: Downloading photos\n---')
+print('\n🌕 STEP 4/4: Downloading photos\n')
 # see if "downloads" folder exists 
 downloads_dir_exists = os.path.isdir('downloads')
 if downloads_dir_exists:
@@ -96,4 +96,4 @@ for url in tqdm(photo_urls):
     name = url.split('.com/')[1].split('/')[1].split('.')[0]
     req.urlretrieve(url, f'downloads/{current_date}/{name}.jpg')
 
-print('✅ Done')
+print('\n✅ Done')
