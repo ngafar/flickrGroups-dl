@@ -4,7 +4,7 @@
 
 While the name Flickr may harbor feelings of nostalgia, the site is still very much alive. This project is a command line tool that helps users bulk download images from Flickr groups.
 
-Why? Flick has a trove of images that have been uploaded of the years, and it's groups have curated these images in fascinating ways. Examples include "subject" based groups (portraits, cats, lighthouses), as well as "technical" groups (photos take with a specific camera, or film stock).
+Why? Flickr has a trove of images that have been uploaded of the years, and it's groups have curated these images in fascinating ways. Examples include "subject" based groups (portraits, cats, lighthouses), as well as "technical" groups (photos take with a specific camera, or film stock).
 
 Using these groups one can easily create their own datasets.
 
