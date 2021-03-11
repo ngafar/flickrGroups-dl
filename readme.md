@@ -1,12 +1,12 @@
-# 🌉 flickrGroups-dl
+# flickrGroups-dl
 
-![screenshot](screenshots/demo.png)
+![screenshot](screenshots.png)
 
-While the name Flickr may elicit feelings of nostalgia, the site is still very much alive. This project is a command line tool that helps users bulk download images from Flickr groups.
+This project is a command line tool that helps users bulk download images from Flickr groups.
 
-Why? Flickr has a trove of images that have been uploaded of the years, and its groups have curated these images in fascinating ways. Examples include "subject" based groups (portraits, cats, lighthouses), as well as "technical" groups (photos take with a specific camera, or film stock).
+Why? Flickr has a trove of images that have been uploaded of the years, and its groups have curated these images in helpful ways. Examples include "subject" based groups (portraits, cats, lighthouses), as well as "technical" groups (photos take with a specific camera, or film stock).
 
-Using these groups one can easily create their own datasets.
+Because of the way groups are organized, it should be easy to create datasets using them.
 
 ## Installation 
 
@@ -20,7 +20,6 @@ cd flickrGroups-dl
 From there install the project dependencies:
 
 ```
-virtualenv env 
 pip install -r requirements.txt
 ```
 
