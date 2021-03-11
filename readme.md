@@ -1,6 +1,6 @@
 # flickrGroups-dl
 
-![screenshot](screenshots.png)
+![screenshot](screenshot.png)
 
 This project is a command line tool that helps users bulk download images from Flickr groups.
 
