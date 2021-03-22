@@ -1,7 +1,5 @@
 # flickrGroups-dl
 
-![screenshot](screenshot.png)
-
 This project is a command line tool that helps users bulk download images from Flickr groups.
 
 Why? Flickr has a trove of images that have been uploaded of the years, and its groups have curated these images in helpful ways. Examples include "subject" based groups (portraits, cats, lighthouses), as well as "technical" groups (photos take with a specific camera, or film stock).
